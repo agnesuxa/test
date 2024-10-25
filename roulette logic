@@ -1,0 +1,15 @@
+document.getElementById("spin-button").addEventListener("click", function() {
+    // Simulate spinning with a delay
+    let spinCount = 10; // Number of spins
+    let spinInterval = setInterval(() => {
+        const randomIndex = Math.floor(Math.random() * episodes.length);
+        document.getElementById("result").innerText = `Spinning... ${episodes[randomIndex]}`;
+        spinCount--;
+        if (spinCount <= 0) {
+            clearInterval(spinInterval);
+            // Select final random episode
+            const finalIndex = Math.floor(Math.random() * episodes.length);
+            document.getElementById("result").innerText = `You should watch: ${episodes[finalIndex]}`;
+        }
+    }, 100); // Spin every 100 ms
+});
