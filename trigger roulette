@@ -1,0 +1,4 @@
+<div id="roulette">
+    <button id="spin-button">Spin the Roulette!</button>
+    <div id="result"></div>
+</div>
