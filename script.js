@@ -1,9 +1,11 @@
-// Sample episode data
-const allEpisodes = ["Episode 1", "Episode 2", "Episode 3", "Episode 4", "Episode 5", "Episode 6", "Episode 7", "Episode 8", "Episode 9", "Episode 10", "Episode 11", "Episode 12", "Episode 13", "Episode 14", "Episode 15"];
+const allEpisodes = [
+  { name: "Episode 1", img: "image1.jpg", url: "#1" },
+  { name: "Episode 2", img: "image2.jpg", url: "#2" },
+  // Add additional episodes here...
+];
 
 function getRandomEpisodes(num) {
-  const shuffled = [...allEpisodes].sort(() => 0.5 - Math.random());
-  return shuffled.slice(0, num);
+  return [...allEpisodes].sort(() => 0.5 - Math.random()).slice(0, num);
 }
 
 document.getElementById("openRoulette").onclick = function() {
@@ -11,14 +13,13 @@ document.getElementById("openRoulette").onclick = function() {
   roulettePopUp.style.display = "flex";
 
   const episodeWheel = document.getElementById("episodeWheel");
-  episodeWheel.innerHTML = ""; // Clear previous items
+  episodeWheel.innerHTML = "";
 
-  // Add 10 random episodes to the wheel
   getRandomEpisodes(10).forEach(episode => {
-    const episodeDiv = document.createElement("div");
-    episodeDiv.classList.add("slice");
-    episodeDiv.innerText = episode;
-    episodeWheel.appendChild(episodeDiv);
+    const slice = document.createElement("div");
+    slice.classList.add("slice");
+    slice.innerText = episode.name;
+    episodeWheel.appendChild(slice);
   });
 };
 
@@ -32,6 +33,23 @@ document.getElementById("spinButton").onclick = function() {
   wheel.style.transform = `rotate(${randomRotation}deg)`;
 
   setTimeout(() => {
-    alert("You landed on a random episode!");
+    const selectedEpisode = getRandomEpisodes(1)[0];
+    showEpisodeNotification(selectedEpisode);
   }, 4000);
+};
+
+function showEpisodeNotification(episode) {
+  const notification = document.getElementById("episodeNotification");
+  const episodeName = document.getElementById("episodeName");
+  const episodeImage = document.getElementById("episodeImage");
+
+  episodeName.textContent = episode.name;
+  episodeImage.src = episode.img;
+  episodeImage.onclick = () => window.location.href = episode.url;
+
+  notification.style.display = "block";
+}
+
+document.getElementById("episodeNotification").onclick = function() {
+  this.style.display = "none";
 };
