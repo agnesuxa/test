@@ -11,56 +11,46 @@ const allEpisodes = [
   { name: "Episode 10: O întâlnire cu zeii", img: "https://anibox.lol/wp-content/uploads/2024/10/zylq3FNjQxziseJBvhyKzutGc2f-2.jpg", url: "https://anibox.lol/watch/amagami-san-chi-no-enmusubi-episoade-3/" },
 ];
 
-function getRandomEpisodes(num) {
-  return [...allEpisodes].sort(() => 0.5 - Math.random()).slice(0, num);
+const openButton = document.getElementById('open-roulette');
+const closeButton = document.getElementById('close-roulette');
+const overlay = document.getElementById('roulette-overlay');
+const spinner = document.getElementById('spinner');
+const episodeNotification = document.getElementById('episode-notification');
+const episodeTitle = document.getElementById('episode-title');
+const episodeImage = document.getElementById('episode-image');
+const episodeLink = document.getElementById('episode-link');
+
+openButton.addEventListener('click', () => {
+    overlay.classList.add('visible');
+    spinWheel();
+});
+
+closeButton.addEventListener('click', () => {
+    overlay.classList.remove('visible');
+    resetWheel();
+});
+
+function spinWheel() {
+    const randomIndex = Math.floor(Math.random() * episodes.length);
+    const selectedEpisode = episodes[randomIndex];
+
+    const spinDuration = 4000; // 4 seconds
+    const randomRotation = Math.floor(360 * 5 + Math.random() * 360); // Spin 5 full rotations plus random
+    spinner.style.transform = `rotate(${randomRotation}deg)`;
+
+    setTimeout(() => {
+        displayEpisode(selectedEpisode);
+    }, spinDuration);
 }
 
-document.getElementById("openRoulette").addEventListener("click", openRoulette);
-document.getElementById("closeRoulette").onclick = closeRoulette;
-document.getElementById("spinButton").onclick = spinRoulette;
-
-function openRoulette() {
-  document.getElementById("roulettePopUp").style.display = "block";
+function displayEpisode(episode) {
+    episodeTitle.innerText = episode.title;
+    episodeImage.src = episode.image;
+    episodeLink.href = episode.link;
+    episodeNotification.classList.remove('hidden');
 }
 
-function closeRoulette() {
-  document.getElementById("roulettePopUp").style.display = "none";
+function resetWheel() {
+    spinner.style.transform = 'rotate(0deg)';
+    episodeNotification.classList.add('hidden');
 }
-
-function spinRoulette() {
-  const wheel = document.getElementById("episodeWheel");
-  wheel.innerHTML = ""; // Clear previous slices
-  const episodes = getRandomEpisodes(10);
-
-  episodes.forEach((episode, index) => {
-    const slice = document.createElement("div");
-    slice.classList.add("slice");
-    slice.innerText = episode.name;
-    slice.style.transform = `rotate(${index * 36}deg) translateY(-150px)`;
-    wheel.appendChild(slice);
-    slice.dataset.image = episode.img;
-    slice.dataset.url = episode.url;
-  });
-
-  const randomRotation = Math.floor(Math.random() * 3600) + 720;
-  wheel.style.transition = "transform 4s ease-out";
-  wheel.style.transform = `rotate(${randomRotation}deg)`;
-
-  setTimeout(() => {
-    showRandomEpisode(episodes[randomRotation % episodes.length]);
-    wheel.style.transition = "none";
-  }, 4000);
-}
-
-function showRandomEpisode(episode) {
-  const notification = document.getElementById("episodeNotification");
-  document.getElementById("episodeName").textContent = episode.name;
-  const episodeImage = document.getElementById("episodeImage");
-  episodeImage.src = episode.img;
-  episodeImage.onclick = () => window.location.href = episode.url;
-  notification.style.display = "block";
-}
-
-document.getElementById("episodeNotification").onclick = function() {
-  this.style.display = "none";
-};
