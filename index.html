@@ -1,75 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Episode Roulette</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
-            text-align: center;
-            padding: 50px;
-        }
-        #roulette {
-            margin: 20px;
-        }
-        #spin-button {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            background-color: #4CAF50; /* Green */
-            color: white;
-            border: none;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-        #spin-button:hover {
-            background-color: #45a049; /* Darker Green */
-        }
-        #result {
-            margin-top: 20px;
-            font-size: 24px;
-            font-weight: bold;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roulette Pop-up</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <h1>Episode Roulette</h1>
-    <div id="roulette">
-        <button id="spin-button">Spin the Roulette!</button>
-        <div id="result"></div>
+  <button id="openRoulette">Spin the Wheel!</button>
+  
+  <!-- Roulette Pop-up -->
+  <div id="roulettePopUp" class="pop-up">
+    <div class="roulette-container">
+      <div class="wheel">
+        <!-- Prize sections -->
+        <div class="slice slice1">Prize 1</div>
+        <div class="slice slice2">Prize 2</div>
+        <div class="slice slice3">Prize 3</div>
+        <div class="slice slice4">Prize 4</div>
+        <div class="slice slice5">Prize 5</div>
+        <div class="slice slice6">Prize 6</div>
+      </div>
+      <button id="spinButton">Spin</button>
+      <button id="closeRoulette">Close</button>
     </div>
-
-    <script>
-        const episodes = [
-            "Episode 1: The Beginning",
-            "Episode 2: The Journey",
-            "Episode 3: The Conflict",
-            "Episode 4: The Resolution",
-            "Episode 5: The Climax",
-            "Episode 6: The Twist",
-            "Episode 7: The Reunion",
-            "Episode 8: The Betrayal",
-            "Episode 9: The Discovery",
-            "Episode 10: The Finale"
-        ];
-
-        document.getElementById("spin-button").addEventListener("click", function() {
-            let spinCount = 10; // Number of spins
-            let spinInterval = setInterval(() => {
-                const randomIndex = Math.floor(Math.random() * episodes.length);
-                document.getElementById("result").innerText = `Spinning... ${episodes[randomIndex]}`;
-                spinCount--;
-                if (spinCount <= 0) {
-                    clearInterval(spinInterval);
-                    const finalIndex = Math.floor(Math.random() * episodes.length);
-                    document.getElementById("result").innerText = `You should watch: ${episodes[finalIndex]}`;
-                }
-            }, 100); // Spin every 100 ms
-        });
-    </script>
-
+  </div>
+  
+  <script src="script.js"></script>
 </body>
 </html>
