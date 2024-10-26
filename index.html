@@ -1,12 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Halloween Anime Roulette</title>
+  <link rel="stylesheet" href="style.css">
+</head>
 <body>
+  <!-- Button to Open Roulette -->
   <button id="openRoulette" class="round-button">🎃</button>
 
   <!-- Roulette Pop-up -->
-  <div id="roulettePopup" style="display: none;">
-    <!-- Roulette content goes here -->
-</div>
-  
-  <div id="roulettePopUp" class="pop-up">
+  <div id="roulettePopup" class="pop-up" style="display: none;">
     <div class="roulette-container">
       <h2>Halloween Anime Roulette 🎃</h2>
       <div class="wheel" id="episodeWheel"></div>
@@ -16,12 +21,11 @@
   </div>
 
   <!-- Episode Notification -->
-  <div id="episodeNotification" class="episode-notification">
+  <div id="episodeNotification" class="episode-notification" style="display: none;">
     <span id="episodeName">Episode Title</span>
     <img id="episodeImage" src="" alt="Episode Image">
   </div>
 
-  <link rel="stylesheet" href="style.css">
   <script src="script.js"></script>
 </body>
-
+</html>
