@@ -1,31 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Halloween Anime Roulette</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halloween Roulette</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Button to Open Roulette -->
-  <button id="openRoulette" class="round-button">🎃</button>
-
-  <!-- Roulette Pop-up -->
-  <div id="roulettePopup" class="pop-up" style="display: none;">
-    <div class="roulette-container">
-      <h2>Halloween Anime Roulette 🎃</h2>
-      <div class="wheel" id="episodeWheel"></div>
-      <button id="spinButton">Spin</button>
-      <button id="closeRoulette">Close</button>
+    <button id="open-roulette" class="roulette-button">🎃 Spin the Roulette!</button>
+    
+    <div id="roulette-overlay" class="overlay">
+        <div class="roulette-wheel">
+            <div id="spinner" class="spinner"></div>
+        </div>
+        <button id="close-roulette" class="close-button">Close</button>
+        <div id="episode-notification" class="notification hidden">
+            <h3 id="episode-title"></h3>
+            <img id="episode-image" src="" alt="Episode Image">
+            <a id="episode-link" href="" target="_blank">Watch Episode</a>
+        </div>
     </div>
-  </div>
 
-  <!-- Episode Notification -->
-  <div id="episodeNotification" class="episode-notification" style="display: none;">
-    <span id="episodeName">Episode Title</span>
-    <img id="episodeImage" src="" alt="Episode Image">
-  </div>
-
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
