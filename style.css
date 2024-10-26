@@ -32,6 +32,8 @@ body {
   background: rgba(0, 0, 0, 0.9);
   justify-content: center;
   align-items: center;
+  z-index: 10;
+  display: flex;
 }
 
 .roulette-container {
@@ -43,29 +45,13 @@ body {
   box-shadow: 0 0 10px #ffa500;
 }
 
-/* Spin Animation */
-@keyframes spinAnimation {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 .wheel {
   width: 300px;
   height: 300px;
   border-radius: 50%;
   background: repeating-conic-gradient(#333 0% 16%, #ffa500 16% 32%);
   position: relative;
-  animation: spinAnimation 4s linear infinite;
-  transition: transform 1s;
-}
-
-/* Hover Effect to slow down spin */
-.wheel:hover {
-  animation-play-state: paused;
+  transition: transform 4s ease-out;
 }
 
 .slice {
@@ -77,16 +63,6 @@ body {
   border-radius: 8px;
   color: white;
   transform-origin: 50% 150px;
-  animation: float 1.5s ease-in-out infinite alternate;
-}
-
-@keyframes float {
-  from {
-    transform: translateY(-10px) rotate(15deg);
-  }
-  to {
-    transform: translateY(10px) rotate(-15deg);
-}
 }
 
 .episode-notification {
@@ -100,6 +76,7 @@ body {
   border-radius: 10px;
   text-align: center;
   box-shadow: 0 0 15px #ffa500;
+  z-index: 20;
 }
 
 .episode-notification img {
