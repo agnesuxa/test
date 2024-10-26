@@ -21,11 +21,13 @@ const episodeImage = document.getElementById('episode-image');
 const episodeLink = document.getElementById('episode-link');
 
 openButton.addEventListener('click', () => {
+  console.log("Open button clicked");
     overlay.classList.add('visible');
     spinWheel();
 });
 
 closeButton.addEventListener('click', () => {
+  console.log("Close button clicked");
     overlay.classList.remove('visible');
     resetWheel();
 });
