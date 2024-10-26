@@ -1,7 +1,14 @@
 const allEpisodes = [
   { name: "Episode 1", img: "image1.jpg", url: "#1" },
   { name: "Episode 2", img: "image2.jpg", url: "#2" },
-  // Add additional episodes as needed
+  { name: "Episode 3", img: "image2.jpg", url: "#3" },
+  { name: "Episode 4", img: "image2.jpg", url: "#4" },
+  { name: "Episode 5", img: "image2.jpg", url: "#5" },
+  { name: "Episode 6", img: "image2.jpg", url: "#6" },
+  { name: "Episode 7", img: "image2.jpg", url: "#7" },
+  { name: "Episode 8", img: "image2.jpg", url: "#8" },
+  { name: "Episode 9", img: "image2.jpg", url: "#9" },
+  { name: "Episode 10", img: "image2.jpg", url: "#10" },
 ];
 
 function getRandomEpisodes(num) {
