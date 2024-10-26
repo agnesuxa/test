@@ -18,6 +18,12 @@ function getRandomEpisodes(num) {
   return [...allEpisodes].sort(() => 0.5 - Math.random()).slice(0, num);
 }
 
+document.getElementById("rouletteButton").addEventListener("click", openRoulette);
+
+function openRoulette() {
+    document.getElementById("roulettePopup").style.display = "block";
+}
+
 document.getElementById("spinButton").onclick = function() {
   const wheel = document.querySelector(".wheel");
   const randomRotation = Math.floor(Math.random() * 360) + 1080;
