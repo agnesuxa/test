@@ -54,22 +54,18 @@ body {
   height: 300px;
   border-radius: 50%;
   background: repeating-conic-gradient(#333 0% 16%, #ffa500 16% 32%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: transform 4s ease-out;
+  position: relative;
 }
 
 .slice {
-  font-size: 16px;
-  color: white;
   position: absolute;
-  width: 90px;
-  height: 40px;
+  transform-origin: center center;
+  width: 80px;
   text-align: center;
-  background: rgba(0, 0, 0, 0.7);
-  border-radius: 8px;
-  margin: 2px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
 }
 
 .episode-notification {
@@ -99,3 +95,14 @@ body {
   transform: scale(1.1);
   box-shadow: 0 0 10px #ffa500;
 }
+
+.slice:nth-child(1) { transform: rotate(0deg) translateX(120px); }
+.slice:nth-child(2) { transform: rotate(36deg) translateX(120px); }
+.slice:nth-child(3) { transform: rotate(72deg) translateX(120px); }
+.slice:nth-child(4) { transform: rotate(108deg) translateX(120px); }
+.slice:nth-child(5) { transform: rotate(144deg) translateX(120px); }
+.slice:nth-child(6) { transform: rotate(180deg) translateX(120px); }
+.slice:nth-child(7) { transform: rotate(216deg) translateX(120px); }
+.slice:nth-child(8) { transform: rotate(252deg) translateX(120px); }
+.slice:nth-child(9) { transform: rotate(288deg) translateX(120px); }
+.slice:nth-child(10) { transform: rotate(324deg) translateX(120px); }
