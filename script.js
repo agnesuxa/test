@@ -18,10 +18,11 @@ function getRandomEpisodes(num) {
   return [...allEpisodes].sort(() => 0.5 - Math.random()).slice(0, num);
 }
 
-document.getElementById("openRoulette").onclick = function() {
-  document.getElementById("roulettePopUp").style.display = "flex";
-  const episodeWheel = document.getElementById("episodeWheel");
-  episodeWheel.innerHTML = ""; 
+document.getElementById("spinButton").onclick = function() {
+  const wheel = document.querySelector(".wheel");
+  const randomRotation = Math.floor(Math.random() * 360) + 1080;
+  wheel.style.transition = "transform 4s ease-out";
+  wheel.style.transform = `rotate(${randomRotation}deg)`;
 
   const episodes = getRandomEpisodes(10);
   episodes.forEach((episode, index) => {
@@ -44,16 +45,16 @@ document.getElementById("spinButton").onclick = function() {
   const randomRotation = Math.floor(Math.random() * 3600) + 720;
   wheel.style.transform = `rotate(${randomRotation}deg)`;
 
-  setTimeout(() => {
-    const selectedEpisode = getRandomEpisodes(1)[0];
-    showEpisodeNotification(selectedEpisode);
+ setTimeout(() => {
+    wheel.style.transition = "none"; // Reset after spin
+    showRandomEpisode();
   }, 4000);
 };
 
-function showEpisodeNotification(episode) {
-  const notification = document.getElementById("episodeNotification");
-  const episodeName = document.getElementById("episodeName");
-  const episodeImage = document.getElementById("episodeImage");
+function showRandomEpisode() {
+  const selectedEpisode = getRandomEpisodes(1)[0];
+  showEpisodeNotification(selectedEpisode);
+}
 
   episodeName.textContent = episode.name;
   episodeImage.src = episode.img;
