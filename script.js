@@ -1,3 +1,4 @@
+document.addEventListener('DOMContentLoaded', () => {
 const allEpisodes = [
   { name: "Episode 1: Bătaie cu Bunica Turbo", img: "https://anibox.lol/wp-content/uploads/2024/10/eTbwdeKsf7MV3Lj73F1VRQHfx80-2.jpg", url: "https://anibox.lol/watch/dandadan-episoade-4/" },
   { name: "Episode 2: Asasinul și Ninja-ul", img: "https://anibox.lol/wp-content/uploads/2024/10/97NloZcN94eEMjCqdgtLwWwMs5-2.jpg", url: "https://anibox.lol/watch/blue-lock-vs-u-20-japan-episoade-26/" },
@@ -11,48 +12,49 @@ const allEpisodes = [
   { name: "Episode 10: O întâlnire cu zeii", img: "https://anibox.lol/wp-content/uploads/2024/10/zylq3FNjQxziseJBvhyKzutGc2f-2.jpg", url: "https://anibox.lol/watch/amagami-san-chi-no-enmusubi-episoade-3/" },
 ];
 
-const openButton = document.getElementById('open-roulette');
-const closeButton = document.getElementById('close-roulette');
-const overlay = document.getElementById('roulette-overlay');
-const spinner = document.getElementById('spinner');
-const episodeNotification = document.getElementById('episode-notification');
-const episodeTitle = document.getElementById('episode-title');
-const episodeImage = document.getElementById('episode-image');
-const episodeLink = document.getElementById('episode-link');
+    const openButton = document.getElementById('open-roulette');
+    const closeButton = document.getElementById('close-roulette');
+    const overlay = document.getElementById('roulette-overlay');
+    const spinner = document.getElementById('spinner');
+    const episodeNotification = document.getElementById('episode-notification');
+    const episodeTitle = document.getElementById('episode-title');
+    const episodeImage = document.getElementById('episode-image');
+    const episodeLink = document.getElementById('episode-link');
 
-openButton.addEventListener('click', () => {
-  console.log("Open button clicked");
-    overlay.classList.add('visible');
-    spinWheel();
+    openButton.addEventListener('click', () => {
+        console.log("Open button clicked");
+        overlay.classList.add('visible');
+        spinWheel();
+    });
+
+    closeButton.addEventListener('click', () => {
+        console.log("Close button clicked");
+        overlay.classList.remove('visible');
+        resetWheel();
+    });
+
+    function spinWheel() {
+        const randomIndex = Math.floor(Math.random() * episodes.length);
+        const selectedEpisode = episodes[randomIndex];
+
+        const spinDuration = 4000; // 4 seconds
+        const randomRotation = Math.floor(360 * 5 + Math.random() * 360); // Spin 5 full rotations plus random
+        spinner.style.transform = `rotate(${randomRotation}deg)`;
+
+        setTimeout(() => {
+            displayEpisode(selectedEpisode);
+        }, spinDuration);
+    }
+
+    function displayEpisode(episode) {
+        episodeTitle.innerText = episode.title;
+        episodeImage.src = episode.image;
+        episodeLink.href = episode.link;
+        episodeNotification.classList.remove('hidden');
+    }
+
+    function resetWheel() {
+        spinner.style.transform = 'rotate(0deg)';
+        episodeNotification.classList.add('hidden');
+    }
 });
-
-closeButton.addEventListener('click', () => {
-  console.log("Close button clicked");
-    overlay.classList.remove('visible');
-    resetWheel();
-});
-
-function spinWheel() {
-    const randomIndex = Math.floor(Math.random() * episodes.length);
-    const selectedEpisode = episodes[randomIndex];
-
-    const spinDuration = 4000; // 4 seconds
-    const randomRotation = Math.floor(360 * 5 + Math.random() * 360); // Spin 5 full rotations plus random
-    spinner.style.transform = `rotate(${randomRotation}deg)`;
-
-    setTimeout(() => {
-        displayEpisode(selectedEpisode);
-    }, spinDuration);
-}
-
-function displayEpisode(episode) {
-    episodeTitle.innerText = episode.title;
-    episodeImage.src = episode.image;
-    episodeLink.href = episode.link;
-    episodeNotification.classList.remove('hidden');
-}
-
-function resetWheel() {
-    spinner.style.transform = 'rotate(0deg)';
-    episodeNotification.classList.add('hidden');
-}
