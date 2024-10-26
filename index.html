@@ -3,28 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Roulette Pop-up</title>
+  <title>Halloween Roulette</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-  
-  <!-- Button to open roulette pop-up -->
-<button id="openRoulette" class="round-button">
-  <i class="fas fa-dice"></i>
-</button>
-  
+  <!-- Button to open roulette pop-up with icon -->
+  <button id="openRoulette" class="round-button">
+    🎃
+  </button>
+
   <!-- Roulette Pop-up -->
   <div id="roulettePopUp" class="pop-up">
     <div class="roulette-container">
-      <div class="wheel">
-        <!-- Prize sections on the roulette -->
-        <div class="slice slice1">Prize 1</div>
-        <div class="slice slice2">Prize 2</div>
-        <div class="slice slice3">Prize 3</div>
-        <div class="slice slice4">Prize 4</div>
-        <div class="slice slice5">Prize 5</div>
-        <div class="slice slice6">Prize 6</div>
+      <div class="wheel" id="episodeWheel">
+        <!-- Episodes will be injected here -->
       </div>
       <button id="spinButton">Spin</button>
       <button id="closeRoulette">Close</button>
